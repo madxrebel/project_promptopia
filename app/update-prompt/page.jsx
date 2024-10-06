@@ -4,10 +4,15 @@ import Form from '@components/Form'
 import { useState, useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 
+// import {Suspense} from "react";
+
+export const dynamic = 'force-dynamic';
+
 const EditPrompt = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const promptId = searchParams.get('id');
+  
 
   const [subtitting, setSubmitting] = useState(false);
   const [post, setPost] = useState({
@@ -56,11 +61,11 @@ const EditPrompt = () => {
   }
   
   return (
-    <Form 
+    <Form
       type="Edit"
       post={post}
       setPost={setPost}
-      subtitting={subtitting}
+      submitting={submitting}
       handleSubmit={updatePrompt}
     />
   )
