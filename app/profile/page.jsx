@@ -15,8 +15,6 @@ const MyProfile = () => {
     useEffect(() => {
         const fetchPosts = async () => {
 
-            await new Promise(resolve => setTimeout(resolve, 3000))
-
             const response = await fetch(`/api/users/${session?.user.id}/posts`)
             const data = await response.json();
       
@@ -32,8 +30,6 @@ const MyProfile = () => {
 
     const handleDelete = async (post) => {
         const hasConfirmed = confirm("Are you sure you want to delete this prompt?");
-
-        await new Promise(resolve => setTimeout(resolve, 3000))
 
         if(hasConfirmed) {
             try {

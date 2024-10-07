@@ -34,9 +34,7 @@ const UpdatePrompt = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    if (!promptId) return alert("Missing PromptId!");
-
-    await new Promise(resolve => setTimeout(resolve, 3000))
+    if (!promptId) return alert("Missing PromptId!")
 
     try {
       const response = await fetch(`/api/prompt/${promptId}`, {
