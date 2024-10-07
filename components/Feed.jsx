@@ -32,8 +32,6 @@ const Feed = () => {
   useEffect(() => {
     const fetchPosts = async () => {
 
-      await new Promise(resolve => setTimeout(resolve, 3000))
-
       const response = await fetch('/api/prompt')
         const data = await response.json();
   
