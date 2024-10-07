@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import PromptCard from './PromptCard'
+import Loading from '@app/loading'
 
 const PromptCardList = ({ data, handleTagClick }) => {
   return (
@@ -30,6 +31,9 @@ const Feed = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
+
+      await new Promise(resolve => setTimeout(resolve, 3000))
+
       const response = await fetch('/api/prompt')
         const data = await response.json();
   
@@ -53,14 +57,14 @@ const Feed = () => {
       </form>
 
       {
-        posts.length === 0 ? (
-          <p>Loading...</p> // You can customize the loading state
-          ) : (
+        posts.length > 0 ? (
           <PromptCardList 
             data={posts}
             handleTagClick={() => {}}
           />
-          )
+        ):(
+          <Loading />
+        )
       }
 
     </section>
