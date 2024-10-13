@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import PromptCard from './PromptCard'
 import Loading from '@app/loading'
+import { Suspense } from 'react'
 
 const PromptCardList = ({ data, handleTagClick }) => {
   return (
@@ -32,7 +33,7 @@ const Feed = () => {
   useEffect(() => {
     const fetchPosts = async () => {
 
-      const response = await fetch('/api/prompt', { cache: "no-store" })
+      const response = await fetch('/api/prompt')
         const data = await response.json();
 
         console.log(data);
@@ -56,17 +57,12 @@ const Feed = () => {
         />
       </form>
 
-      {
-        posts.length > 0 ? (
+        <Suspense fallback={<Loading />}>
           <PromptCardList 
             data={posts}
             handleTagClick={() => {}}
           />
-        ):(
-          <Loading />
-        )
-      }
-
+        </Suspense>
     </section>
   )
 }
