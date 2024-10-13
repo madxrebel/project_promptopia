@@ -30,8 +30,8 @@ const CreatePrompt = () => {
       })
 
       if(response.ok) {
-        // router.push('/');
-        console.log('Prompt successfully created!');
+        router.push('/');
+        // console.log('Prompt successfully created!');
       }
     } catch (error) {
       console.error('Failed to create prompt:', error);
